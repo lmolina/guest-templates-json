@@ -141,7 +141,7 @@ class Recommendations(object):
         if 'supports_uefi' in data:
             self.supports_uefi = 'yes' if get_bool_key(data, 'supports_uefi', False) else 'no'
             if self.supports_uefi == 'yes' and 'platform' in data \
-               and 'device_model' in data['platform'] and data['platform']['device_model']:
+               and 'device-model' in data['platform'] and data['platform']['device-model']:
                 raise ValueError("Cannot have both device-model and supports_uefi in a template")
         if 'supports_secure_boot' in data:
             self.supports_secure_boot = 'yes' if get_bool_key(data, 'supports_secure_boot', False) else 'no'
