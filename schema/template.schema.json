@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "uuid": {
+      "type": "string"
+    },
+    "reference_label": {
+      "type": "string"
+    },
+    "name_label": {
+      "type": "string"
+    },
+    "derived_from": {
+      "type": "string"
+    },
+    "min_memory": {
+      "type": "string"
+    },
+    "disks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "string"
+          },
+          "bootable": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "size"
+        ]
+      }
+    },
+    "max_memory": {
+      "type": "string"
+    },
+    "other_config": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "null"]
+      }
+    },
+    "name_description": {
+      "type": "string"
+    },
+    "PV_args": {
+      "type": "string"
+    },
+    "vcpus_max": {
+      "type": "integer"
+    },
+    "number_of_vbds": {
+      "type": "integer"
+    },
+    "number_of_vifs": {
+      "type": "integer"
+    },
+    "allow_gpu_passthrough": {
+      "type": "boolean"
+    },
+    "allow_vgpu": {
+      "type": "boolean"
+    },
+    "allow_network_sriov": {
+      "type": "boolean"
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "null"]
+      }
+    },
+    "HVM_boot_policy": {
+      "type": "string"
+    },
+    "HVM_boot_params": {
+      "type": "object",
+      "properties": {
+        "firmware": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "firmware",
+        "order"
+      ]
+    },
+    "supports_bios": {
+      "type": "string"
+    },
+    "supports_uefi": {
+      "type": "string"
+    },
+    "supports_secure_boot": {
+      "type": "string"
+    },
+    "domain_type": {
+      "type": "string"
+    },
+    "PV_bootloader": {
+      "type": "string"
+    },
+    "VCPUs_at_startup": {
+      "type": "integer"
+    },
+    "VCPUs_max": {
+      "type": "integer"
+    },
+    "has_vendor_device": {
+      "type": "boolean"
+    },
+    "generation_id": {
+      "type": "string"
+    },
+    "vcpus_min": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false
+}
