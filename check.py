@@ -46,6 +46,23 @@ class TestLoader(unittest.TestCase):
 
 
 class TestJsonFiles(unittest.TestCase):
+    def test_strict_json(self):
+        """Tests that the templates are strict JSON: no duplicated keys, no NaN/Infinity."""
+
+        def reject_duplicates(pairs):
+            keys = [k for k, _ in pairs]
+            duplicates = [k for k in keys if keys.count(k) > 1]
+            self.assertEqual(duplicates, [])
+            return dict(pairs)
+
+        def reject_constant(name):
+            self.fail(f"non-standard JSON constant: {name}")
+
+        for path in sorted(glob.glob("json/*.json")):
+            with self.subTest(path=path), open(path) as f:
+                json.load(f, object_pairs_hook=reject_duplicates,
+                          parse_constant=reject_constant)
+
     def test_schema(self):
         """Tests that every template matches schema/template.schema.json."""
         with open("schema/template.schema.json") as f:
